@@ -37,14 +37,15 @@ const Header: React.FC = () => {
     const left = (
         <div className="left">
             <NavLink href="/">Home</NavLink>
-            {session && session.user.role >= UserRole.OPERATOR && (
-                <NavLink href="/drafts">My Drafts</NavLink>
-            )}
-            {session && session.user.role === UserRole.OPERATOR && (
-                <>
-                    <NavLink href="/chat">My chats</NavLink>
-                </>
-            )}
+            {/*{session && session.user.role >= UserRole.OPERATOR && (*/}
+            {/*    <NavLink href="/drafts">My Drafts</NavLink>*/}
+            {/*)}*/}
+            {/*{session && session.user.role === UserRole.OPERATOR && (*/}
+            {/*    <>*/}
+            {/*        <NavLink href="/chat">My chats</NavLink>*/}
+            {/*    </>*/}
+            {/*)}*/}
+            <NavLink href="/brief">Brief</NavLink>
         </div>
     );
 

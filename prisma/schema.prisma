@@ -117,3 +117,38 @@ model ArchivedMessage {
   chatId     Int
   isFromUser Boolean
 }
+
+model Brief {
+  id             Int      @id @default(autoincrement())
+  createdAt      DateTime @default(now())
+  contactName    String
+  contactPhone   String
+  companyProduct String
+  description    String
+  values         String
+  targetAudience String
+
+  websiteGoal String
+
+  competitors       String
+  geographicRegions String
+
+  gallery        Boolean @default(false)
+  blog           Boolean @default(false)
+  productCatalog Boolean @default(false)
+
+  languageVersions   String
+  designRequirements String
+
+  seo                   Boolean @default(false)
+  contextualAdvertising Boolean @default(false)
+  socialMedia           Boolean @default(false)
+
+  contentManagement     String
+  likesDislikes         String
+  additionalInformation String
+
+  deadline DateTime
+
+  budget Int
+}
