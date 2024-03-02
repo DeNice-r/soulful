@@ -26,7 +26,7 @@ const Brief: React.FC = () => {
             }
         }
 
-        data['deadline'] = new Date(data['deadline'] as string).toISOString();
+        data['budget'] = Number(data['budget']);
 
         try {
             await fetch('/api/brief', {
@@ -34,7 +34,7 @@ const Brief: React.FC = () => {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(data),
             });
-            await Router.push('/');
+            // await Router.push('/');
             toast('Brief submitted successfully!');
         } catch (error) {
             console.error(error);
@@ -236,9 +236,9 @@ const Brief: React.FC = () => {
                     <TextField
                         margin="normal"
                         fullWidth
-                        id="additionalInfo"
+                        id="additionalInformation"
                         label="Additional Information"
-                        name="additionalInfo"
+                        name="additionalInformation"
                         multiline
                         rows={2}
                         helperText="Any additional information or special requirements for the project."

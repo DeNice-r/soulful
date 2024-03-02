@@ -119,8 +119,9 @@ model ArchivedMessage {
 }
 
 model Brief {
-  id             Int      @id @default(autoincrement())
-  createdAt      DateTime @default(now())
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+
   contactName    String
   contactPhone   String
   companyProduct String
