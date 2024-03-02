@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Router from 'next/router';
 import ConstrainedLayout from '../components/ConstrainedLayout';
 import {
@@ -12,27 +12,10 @@ import {
     Tooltip,
 } from '@mui/material';
 import Button from '@mui/material/Button';
+import { toast } from 'react-toastify';
 
 const Brief: React.FC = () => {
-    const [title, setTitle] = useState('');
-    const [content, setContent] = useState('');
-
-    const submitData = async (e: React.SyntheticEvent) => {
-        e.preventDefault();
-        try {
-            const body = { title, content };
-            await fetch('/api/post', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(body),
-            });
-            await Router.push('/drafts');
-        } catch (error) {
-            console.error(error);
-        }
-    };
-
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event: any) => {
         event.preventDefault();
         const formData = new FormData(event.currentTarget);
         const data: Record<string, unknown> = Object.fromEntries(formData);
@@ -45,7 +28,17 @@ const Brief: React.FC = () => {
 
         data['deadline'] = new Date(data['deadline'] as string).toISOString();
 
-        console.log(data);
+        try {
+            await fetch('/api/brief', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data),
+            });
+            await Router.push('/');
+            toast('Brief submitted successfully!');
+        } catch (error) {
+            console.error(error);
+        }
     };
 
     return (

@@ -1,5 +1,7 @@
 import React, { ReactNode } from 'react';
 import Header from './Header';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 type Props = {
     children: ReactNode;
@@ -9,6 +11,18 @@ const Layout: React.FC<Props> = (props) => (
     <div>
         <Header />
         <div className="layout">{props.children}</div>
+        <ToastContainer
+            position="bottom-center"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="light"
+        />
         <style jsx global>{`
             html {
                 box-sizing: border-box;
