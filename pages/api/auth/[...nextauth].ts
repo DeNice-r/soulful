@@ -144,10 +144,10 @@ export function requestWrapper(
         secret: process.env.NEXTAUTH_SECRET,
         debug: true,
         providers: [
-            GithubProvider({
-                clientId: process.env.GITHUB_ID,
-                clientSecret: process.env.GITHUB_SECRET,
-            }),
+            // GithubProvider({
+            //     clientId: process.env.GITHUB_ID,
+            //     clientSecret: process.env.GITHUB_SECRET,
+            // }),
             CredentialProvider({
                 name: 'CredentialProvider',
                 credentials: {

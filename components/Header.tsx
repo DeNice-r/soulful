@@ -53,26 +53,28 @@ const Header: React.FC = () => {
         <Box sx={{ marginLeft: 'auto' }}>
             {session ? (
                 <>
-                    {session.user.role >= UserRole.USER && (
-                        <IconButton
-                            size="small"
-                            color="primary"
-                            onClick={changeStatus}
-                        >
-                            <OnlinePredictionIcon
-                                color={
-                                    session.user.isOnline
-                                        ? 'success'
-                                        : 'warning'
-                                }
-                            />
-                        </IconButton>
-                    )}
+                    {/*{session.user.role >= UserRole.USER && (*/}
+                    {/*    <IconButton*/}
+                    {/*        size="small"*/}
+                    {/*        color="primary"*/}
+                    {/*        onClick={changeStatus}*/}
+                    {/*    >*/}
+                    {/*        <OnlinePredictionIcon*/}
+                    {/*            color={*/}
+                    {/*                session.user.isOnline*/}
+                    {/*                    ? 'success'*/}
+                    {/*                    : 'warning'*/}
+                    {/*            }*/}
+                    {/*        />*/}
+                    {/*    </IconButton>*/}
+                    {/*)}*/}
+                    <Button href="/dashboard">Dashboard</Button>
                     <Box component="div" sx={{ display: 'inline' }}>
-                        {session.user.name} ({session.user.email}) /
-                        {session.user.role}/
+                        {session.user.name} ({session.user.email})
+                        {/*/*/}
+                        {/*{session.user.role}/*/}
                     </Box>
-                    <Button href="/create">New post</Button>
+                    {/*<Button href="/create">New post</Button>*/}
 
                     <Button onClick={() => signOut()}>Log out</Button>
                 </>
