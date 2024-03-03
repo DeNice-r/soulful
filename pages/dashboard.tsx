@@ -19,7 +19,9 @@ import { Brief } from '@prisma/client';
 import Layout from '$/Layout';
 
 import { jsPDF } from 'jspdf';
-import 'jspdf-autotable';
+import autoTable from 'jspdf-autotable';
+
+import '#/Lobster-Regular-normal.js';
 
 type BriefJSONReady = Brief & {
     createdAt: string;
@@ -69,6 +71,12 @@ const Dashboard: React.FC<{ briefs: BriefJSONReady[] }> = ({ briefs }) => {
 
         const pdf = new jsPDF();
 
+        pdf.setFont(
+            // 'Roboto-Regular',
+            'Lobster-Regular',
+            'normal',
+        ); // Use the font
+
         pdf.setFontSize(18);
         pdf.text('Brief Details', 10, 10);
 
@@ -82,8 +90,12 @@ const Dashboard: React.FC<{ briefs: BriefJSONReady[] }> = ({ briefs }) => {
             return { field: camelCaseToWords(key), value: brief[key] };
         });
 
-        // @ts-expect-error method is imported from jspdf-autotable
-        pdf.autoTable(columns, data, { startY: 20 });
+        autoTable(pdf, {
+            head: [columns.map((c) => c.header)],
+            body: data.map((d) => columns.map((c) => d[c.dataKey])),
+            startY: 20,
+            styles: { font: 'Lobster-Regular', fontSize: 12, cellPadding: 1 },
+        });
 
         // Save the PDF
         pdf.save(`Brief-${brief.id}.pdf`);
