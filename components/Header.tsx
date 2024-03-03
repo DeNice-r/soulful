@@ -68,7 +68,7 @@ const Header: React.FC = () => {
                     {/*        />*/}
                     {/*    </IconButton>*/}
                     {/*)}*/}
-                    <Button href="/dashboard">Dashboard</Button>
+                    <NavLink href="/dashboard">Dashboard</NavLink>
                     <Box component="div" sx={{ display: 'inline' }}>
                         {session.user.name} ({session.user.email})
                         {/*/*/}

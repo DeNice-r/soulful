@@ -1,5 +1,4 @@
 import React from 'react';
-import Router from 'next/router';
 import ConstrainedLayout from '../components/ConstrainedLayout';
 import {
     Checkbox,
