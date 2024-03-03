@@ -22,6 +22,7 @@ import { jsPDF } from 'jspdf';
 import autoTable from 'jspdf-autotable';
 
 import '#/Lobster-Regular-normal.js';
+import Router from 'next/router';
 
 type BriefJSONReady = Brief & {
     createdAt: string;
@@ -64,6 +65,10 @@ const Dashboard: React.FC<{ briefs: BriefJSONReady[] }> = ({ briefs }) => {
             return;
         }
         setExpandedRowIndex(index);
+    };
+
+    const handleEditBrief = (index: number) => {
+        Router.push(`/brief/${briefs[index].id}`);
     };
 
     const handleDownloadPDF = (index: number) => {
@@ -143,6 +148,16 @@ const Dashboard: React.FC<{ briefs: BriefJSONReady[] }> = ({ briefs }) => {
                                         </Button>
                                         <Button
                                             variant="contained"
+                                            color="warning"
+                                            onClick={() =>
+                                                handleEditBrief(index)
+                                            }
+                                            style={{ marginLeft: '10px' }}
+                                        >
+                                            Edit
+                                        </Button>
+                                        <Button
+                                            variant="contained"
                                             color="secondary"
                                             onClick={() =>
                                                 handleDownloadPDF(index)
@@ -207,8 +222,8 @@ const Dashboard: React.FC<{ briefs: BriefJSONReady[] }> = ({ briefs }) => {
                                                 <Typography variant="body1">
                                                     <strong>Features:</strong>{' '}
                                                     Gallery:{' '}
-                                                    {row.gallery ? 'Yes' : 'No'}
-                                                    , , Blog:{' '}
+                                                    {row.gallery ? 'Yes' : 'No'},
+                                                    Blog:{' '}
                                                     {row.blog ? 'Yes' : 'No'},
                                                     Product Catalog:{' '}
                                                     {row.productCatalog
