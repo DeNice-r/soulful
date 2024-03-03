@@ -70,8 +70,7 @@ const Header: React.FC = () => {
                     {/*)}*/}
                     <NavLink href="/dashboard">Dashboard</NavLink>
                     <Box component="div" sx={{ display: 'inline' }}>
-                        {session.user.name} ({session.user.email})
-                        {/*/*/}
+                        {session.user.name} ({session.user.email}){/*/*/}
                         {/*{session.user.role}/*/}
                     </Box>
                     {/*<Button href="/create">New post</Button>*/}

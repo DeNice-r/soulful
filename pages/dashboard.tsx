@@ -27,8 +27,8 @@ type BriefJSONReady = Brief & {
 };
 
 function camelCaseToWords(s: string) {
-  const result = s.replace(/([A-Z])/g, ' $1');
-  return result.charAt(0).toUpperCase() + result.slice(1);
+    const result = s.replace(/([A-Z])/g, ' $1');
+    return result.charAt(0).toUpperCase() + result.slice(1);
 }
 
 export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
@@ -82,7 +82,7 @@ const Dashboard: React.FC<{ briefs: BriefJSONReady[] }> = ({ briefs }) => {
             return { field: camelCaseToWords(key), value: brief[key] };
         });
 
-        // Add table to PDF
+        // @ts-expect-error method is imported from jspdf-autotable
         pdf.autoTable(columns, data, { startY: 20 });
 
         // Save the PDF
