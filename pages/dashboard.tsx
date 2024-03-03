@@ -57,6 +57,10 @@ const Dashboard: React.FC<{ briefs: BriefJSONReady[] }> = ({ briefs }) => {
     const [expandedRowIndex, setExpandedRowIndex] = useState(null);
 
     const handleViewDetails = (index: number) => {
+        if (expandedRowIndex === index) {
+            setExpandedRowIndex(null);
+            return;
+        }
         setExpandedRowIndex(index);
     };
 
@@ -82,7 +86,7 @@ const Dashboard: React.FC<{ briefs: BriefJSONReady[] }> = ({ briefs }) => {
         pdf.autoTable(columns, data, { startY: 20 });
 
         // Save the PDF
-        pdf.save(`Brief-${index}.pdf`);
+        pdf.save(`Brief-${brief.id}.pdf`);
     };
 
     return (
