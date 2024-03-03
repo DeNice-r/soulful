@@ -12,6 +12,7 @@ import {
 } from '@mui/material';
 import Button from '@mui/material/Button';
 import { toast } from 'react-toastify';
+import Router from 'next/router';
 
 const Brief: React.FC = () => {
     const handleSubmit = async (event: any) => {
@@ -33,7 +34,7 @@ const Brief: React.FC = () => {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(data),
             });
-            // await Router.push('/');
+            await Router.push('/');
             toast('Brief submitted successfully!');
         } catch (error) {
             console.error(error);
